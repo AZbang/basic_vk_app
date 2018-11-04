@@ -1,12 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {applyMiddleware, createStore} from 'redux';
+import {Provider} from 'react-redux';
+import {Route} from 'react-router';
+import {createHashHistory} from 'history';
+import {ConnectedRouter, routerMiddleware} from 'react-router-redux';
+import thunk from 'redux-thunk';
+
+import registerServiceWorker from './registerServiceWorker';
+import rootReducer from './store';
+import App from './containers/App';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const history = createHashHistory({
+  hashType: 'noslash'
+});
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const logger = store => next => action => {
+  console.log('dispatching', action);
+  return next(action);
+};
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+const store = createStore(
+  rootReducer,
+  composeEnhancers(
+    applyMiddleware(thunk, routerMiddleware(history), logger),
+  )
+);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <div>
+        <Route path='/:pageId' component={(props) => <App pageId={props.match.params.pageId}/>}/>
+      </div>
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('root')
+);
+
+registerServiceWorker();
