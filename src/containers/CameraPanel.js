@@ -10,7 +10,7 @@ class CameraPanel extends React.Component {
   render() {
     return (
       <Panel id={this.props.id}>
-        <PanelHeader right={<HeaderButton onClick={this.openGallery.bind(this)}>{<Icon24Add />}</HeaderButton>}>
+        <PanelHeader left={<HeaderButton onClick={this.openGallery.bind(this)}>{<Icon24Add />}</HeaderButton>}>
           Camera
         </PanelHeader>
         <video autoPlay id="stream-camera"></video>

@@ -21,19 +21,20 @@ const logger = store => next => action => {
   return next(action);
 };
 
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 const store = createStore(
   rootReducer,
-  composeEnhancers(
-    applyMiddleware(thunk, routerMiddleware(history), logger),
-  )
+  composeEnhancers ?
+   composeEnhancers(applyMiddleware(thunk, routerMiddleware(history), logger)) :
+   applyMiddleware(thunk, routerMiddleware(history), logger)
 );
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
-        <Route path='/:pageId' component={(props) => <App pageId={props.match.params.pageId}/>}/>
+        <Route path='/:pageId?' component={(props) => <App pageId={props.match.params.pageId}/>}/>
       </div>
     </ConnectedRouter>
   </Provider>,

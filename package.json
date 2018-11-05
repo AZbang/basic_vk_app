@@ -1,6 +1,7 @@
 {
   "name": "vkapp",
   "version": "0.1.0",
+  "homepage": "https://azbang.github.io/basic_vk_app/",
   "private": true,
   "dependencies": {
     "@vkontakte/icons": "^1.1.1",

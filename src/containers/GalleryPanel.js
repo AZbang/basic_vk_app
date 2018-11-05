@@ -11,7 +11,7 @@ class GalleryPanel extends React.Component {
   render() {
     return (
       <Panel id={this.props.id}>
-        <PanelHeader right={<HeaderButton onClick={this.openCamera.bind(this)}>{<Icon24Add />}</HeaderButton>}>
+        <PanelHeader left={<HeaderButton onClick={this.openCamera.bind(this)}>{<Icon24Add />}</HeaderButton>}>
           Gallery
         </PanelHeader>
 
