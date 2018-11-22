@@ -1,34 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {applyMiddleware, createStore} from 'redux';
-import {Provider} from 'react-redux';
-import {Route} from 'react-router';
-import {createHashHistory} from 'history';
-import {ConnectedRouter, routerMiddleware} from 'react-router-redux';
-import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import { Route } from 'react-router';
+import { ConnectedRouter } from 'connected-react-router'
 
-import registerServiceWorker from './registerServiceWorker';
-import rootReducer from './store';
+import registerServiceWorker from './sw';
+import {store, history} from './store';
 import App from './containers/App';
 import './index.css';
-
-const history = createHashHistory({
-  hashType: 'noslash'
-});
-
-const logger = store => next => action => {
-  console.log('dispatching', action);
-  return next(action);
-};
-
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-const store = createStore(
-  rootReducer,
-  composeEnhancers ?
-   composeEnhancers(applyMiddleware(thunk, routerMiddleware(history), logger)) :
-   applyMiddleware(thunk, routerMiddleware(history), logger)
-);
 
 ReactDOM.render(
   <Provider store={store}>

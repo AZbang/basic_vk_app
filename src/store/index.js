@@ -1,8 +1,22 @@
-import {routerReducer} from 'react-router-redux';
-import {combineReducers} from 'redux';
-import vk from './vk/reducer';
+import { applyMiddleware, compose, createStore } from 'redux'
+import { routerMiddleware } from 'connected-react-router'
+import { createBrowserHistory } from 'history'
+import createSagaMiddleware from 'redux-saga'
+import createRootReducer from './reducers'
+import mySaga from '../sagas'
 
-export default combineReducers({
-  vk: vk,
-  router: routerReducer,
-});
+const history = createBrowserHistory();
+const sagaMiddleware = createSagaMiddleware();
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  createRootReducer(history),
+  composeEnhancer(
+    applyMiddleware(
+      routerMiddleware(history),
+      sagaMiddleware
+    ),
+  ),
+);
+sagaMiddleware.run(mySaga);
+
+export {store, history};
