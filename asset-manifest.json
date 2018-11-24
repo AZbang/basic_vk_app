@@ -1,6 +1,15 @@
 {
-  "main.css": "static/css/main.3ef100ed.css",
-  "main.css.map": "static/css/main.3ef100ed.css.map",
-  "main.js": "static/js/main.1eac0e9e.js",
-  "main.js.map": "static/js/main.1eac0e9e.js.map"
+  "main.css": "/vk_app/static/css/main.b0b47fa0.chunk.css",
+  "main.js": "/vk_app/static/js/main.b239d8fe.chunk.js",
+  "main.js.map": "/vk_app/static/js/main.b239d8fe.chunk.js.map",
+  "static/css/1.faae2728.chunk.css": "/vk_app/static/css/1.faae2728.chunk.css",
+  "static/js/1.7f428e70.chunk.js": "/vk_app/static/js/1.7f428e70.chunk.js",
+  "static/js/1.7f428e70.chunk.js.map": "/vk_app/static/js/1.7f428e70.chunk.js.map",
+  "runtime~main.js": "/vk_app/static/js/runtime~main.96c121ed.js",
+  "runtime~main.js.map": "/vk_app/static/js/runtime~main.96c121ed.js.map",
+  "static/css/1.faae2728.chunk.css.map": "/vk_app/static/css/1.faae2728.chunk.css.map",
+  "static/css/main.b0b47fa0.chunk.css.map": "/vk_app/static/css/main.b0b47fa0.chunk.css.map",
+  "index.html": "/vk_app/index.html",
+  "precache-manifest.a82ed774dda5ece3af5b89218f4d223a.js": "/vk_app/precache-manifest.a82ed774dda5ece3af5b89218f4d223a.js",
+  "service-worker.js": "/vk_app/service-worker.js"
 }
