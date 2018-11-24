@@ -3,7 +3,7 @@ import { routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 import createSagaMiddleware from 'redux-saga'
 import createRootReducer from './reducers'
-import mySaga from '../sagas'
+import rootSaga from './sagas'
 
 const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
@@ -17,6 +17,6 @@ const store = createStore(
     ),
   ),
 );
-sagaMiddleware.run(mySaga);
+sagaMiddleware.run(rootSaga);
 
 export {store, history};
