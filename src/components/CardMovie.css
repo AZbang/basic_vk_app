@@ -4,5 +4,14 @@
   border-radius: 5px;
   box-shadow: 0px 2px 4px 0px #ccc;
   margin-bottom: 15px;
-  background: #286aff;
+  background-color: #ссс;
+  background-size: cover;
+  position: relative;
+  background-position: center;
+}
+
+.card-movie__bookmarks {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 }

@@ -1,45 +1,32 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {View, Panel, PanelHeader, Group} from '@vkontakte/vkui';
-import {Grid, Row, Col} from 'react-flexbox-grid';
-import CardMovie from '../components/CardMovie';
+import {View, Panel, PanelHeader, Group, Spinner} from '@vkontakte/vkui';
+import CardMoviesList from './CardMoviesList';
+import {getPopularMovies} from '../actions';
 
 class MainView extends React.Component {
-  getCardMoviesList = (amt) => (
-    new Array(amt).fill(0).map((v, i) => (
-      <Col xs={6} key={i}>
-        <CardMovie/>
-      </Col>
-    ))
-  )
+  componentDidMount() {
+    this.props.dispatch(getPopularMovies())
+  }
 
   render = () => (
     <View id={this.props.id} activePanel={this.props.id}>
       <Panel id={this.props.id}>
         <PanelHeader>#ЧТОПОСМОТРЕТЬ</PanelHeader>
-
-        <Group title="СОВЕТЫ ДРУЗЕЙ">
-          <Grid fluid>
-            <Row>
-              {this.getCardMoviesList(2)}
-            </Row>
-          </Grid>
+        <Group title="НОВИНКИ КИНО">
+          <CardMoviesList movies={this.props.popular}/>
         </Group>
-
-        <Group title="ЧТО СМОТРЯТ СЕГОДНЯ">
-          <Grid fluid>
-            <Row>
-              {this.getCardMoviesList(5)}
-            </Row>
-          </Grid>
-        </Group>
+        {this.props.loading ? (<div style={{height: 100}}><Spinner/></div>) : null}
       </Panel>
     </View>
   )
 }
 
 function mapStateToProps(state) {
-  return {}
+  return {
+    popular: state.movies.popular,
+    loading: state.loading
+  }
 }
 
 export default connect(mapStateToProps)(MainView);

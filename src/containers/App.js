@@ -4,13 +4,13 @@ import {push} from 'connected-react-router';
 
 import {ConfigProvider, Epic, Tabbar, TabbarItem} from '@vkontakte/vkui';
 import Icon28KeyboardBotsOutline from '@vkontakte/icons/dist/28/keyboard_bots_outline';
-import Icon28AddOutline from '@vkontakte/icons/dist/28/add_outline';
 import Icon24FavoriteOutline from '@vkontakte/icons/dist/24/favorite_outline';
+import Icon28Search from '@vkontakte/icons/dist/28/search';
 import {isWebView} from '@vkontakte/vkui/src/lib/webview';
 import '@vkontakte/vkui/dist/vkui.css';
 
-import AddView from './AddView';
 import MainView from './MainView';
+import SearchView from './SearchView';
 import BookmarksView from './BookmarksView';
 
 class App extends React.Component {
@@ -26,9 +26,9 @@ class App extends React.Component {
           <Tabbar>
             <TabbarItem
                onClick={this.onStoryChange}
-               selected={activeRoute === 'add'}
-               data-story="add"
-            ><Icon28AddOutline/></TabbarItem>
+               selected={activeRoute === 'search'}
+               data-story="search"
+            ><Icon28Search/></TabbarItem>
             <TabbarItem
                onClick={this.onStoryChange}
                selected={activeRoute === 'main'}
@@ -43,7 +43,7 @@ class App extends React.Component {
           </Tabbar>
         }>
           <MainView id="main" accessToken={this.props.accessToken}/>
-          <AddView id="add" accessToken={this.props.accessToken}/>
+          <SearchView id="search" accessToken={this.props.accessToken}/>
           <BookmarksView id="bookmarks" accessToken={this.props.accessToken}/>
         </Epic>
       </ConfigProvider>

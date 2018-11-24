@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {View, Panel, PanelHeader, Group} from '@vkontakte/vkui';
+import CardMoviesList from './CardMoviesList';
 
 class BookmarksView extends React.Component {
   render = () => (
@@ -9,6 +10,7 @@ class BookmarksView extends React.Component {
         <PanelHeader>#ЧТОПОСМОТРЕТЬ</PanelHeader>
 
         <Group title="ХОЧУ ПОСМОТРЕТЬ">
+          <CardMoviesList movies={this.props.bookmarks}/>
         </Group>
       </Panel>
     </View>
@@ -16,7 +18,9 @@ class BookmarksView extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {}
+  return {
+    bookmarks: state.movies.bookmarks
+  }
 }
 
 export default connect(mapStateToProps)(BookmarksView);
