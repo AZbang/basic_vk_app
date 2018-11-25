@@ -20,7 +20,7 @@ class SearchView extends React.Component {
     <View id={this.props.id} activePanel={this.props.id}>
       <Panel id={this.props.id}>
         <PanelHeader noShadow>#ЧТОПОСМОТРЕТЬ</PanelHeader>
-        <Search onChange={this.onChange}/>
+        <Search defaultValue={this.props.searchQuery} onChange={this.onChange}/>
         <br/>
         <CardMoviesList movies={this.props.search}/>
         <Loading show={this.props.loading}/>

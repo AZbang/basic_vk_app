@@ -8,7 +8,7 @@ class CardMovie extends React.Component {
   render = () => (
     <div className="card-movie">
       <span className="card-movie__bookmarks" onClick={this.props.isBookmarks ? this.props.onRemoveBookmarks : this.props.onAddBookmarks}>
-        {this.props.isBookmarks ? <Icon24Favorite fill="#5181B8"/> : <Icon24FavoriteOutline fill="#5181B8"/>}
+        {this.props.isBookmarks ? <Icon24Favorite fill="#fff"/> : <Icon24FavoriteOutline fill="#717171"/>}
       </span>
       <div
         onClick={this.props.onClick}

@@ -5,9 +5,14 @@ import { Route } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router'
 
 import registerServiceWorker from './sw';
+import {saveState} from './storage';
 import {store, history} from './store';
 import App from './containers/App';
 import './index.css';
+
+store.subscribe(() => {
+  saveState('bookmarks', store.getState().movies.bookmarks);
+});
 
 ReactDOM.render(
   <Provider store={store}>

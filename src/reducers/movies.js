@@ -1,4 +1,5 @@
 import Immutable from 'seamless-immutable';
+import {getState} from '../storage';
 
 const initialState = Immutable({
   searchQuery: '',
@@ -6,7 +7,7 @@ const initialState = Immutable({
   popular: [],
   movie: {},
   openMovieInfo: false,
-  bookmarks: [],
+  bookmarks: getState('bookmarks') || [],
   friends: [],
   all: []
 });
