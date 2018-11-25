@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {View, Panel, PanelHeader, Group, Spinner} from '@vkontakte/vkui';
-import CardMoviesList from './CardMoviesList';
+import {View, Panel, PanelHeader, Group} from '@vkontakte/vkui';
 import {getPopularMovies} from '../actions';
+import CardMoviesList from './CardMoviesList';
+import Loading from '../components/Loading';
 
 class MainView extends React.Component {
   componentDidMount() {
@@ -16,7 +17,7 @@ class MainView extends React.Component {
         <Group title="НОВИНКИ КИНО">
           <CardMoviesList movies={this.props.popular}/>
         </Group>
-        {this.props.loading ? (<div style={{height: 100}}><Spinner/></div>) : null}
+        <Loading show={this.props.loading}/>
       </Panel>
     </View>
   )

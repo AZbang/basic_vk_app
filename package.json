@@ -28,7 +28,7 @@
     "cross-env": "^5.2.0",
     "gh-pages": "^2.0.1",
     "react-hot-loader": "^4.3.12",
-    "react-scripts": "^1.1.5"
+    "react-scripts": "2.0.3"
   },
   "scripts": {
     "start": "SET PORT=10888 && react-scripts start",
@@ -37,5 +37,11 @@
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

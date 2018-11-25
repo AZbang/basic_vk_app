@@ -1,8 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {View, Panel, PanelHeader, Search, Spinner} from '@vkontakte/vkui';
+import {View, Panel, PanelHeader, Search} from '@vkontakte/vkui';
+
 import {searchMovies} from '../actions';
 import CardMoviesList from './CardMoviesList';
+import Loading from '../components/Loading';
 
 class SearchView extends React.Component {
   timeId = null;
@@ -21,7 +23,7 @@ class SearchView extends React.Component {
         <Search onChange={this.onChange}/>
         <br/>
         <CardMoviesList movies={this.props.search}/>
-        {this.props.loading ? (<div style={{height: 100}}><Spinner/></div>) : null}
+        <Loading show={this.props.loading}/>
       </Panel>
     </View>
   )
@@ -30,6 +32,7 @@ class SearchView extends React.Component {
 function mapStateToProps(state) {
   return {
     search: state.movies.search,
+    searchQuery: state.movies.searchQuery,
     loading: state.loading
   }
 }

@@ -12,6 +12,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 import MainView from './MainView';
 import SearchView from './SearchView';
 import BookmarksView from './BookmarksView';
+import MovieInfoView from './MovieInfoView';
 
 class App extends React.Component {
   onStoryChange = (e) =>
@@ -21,7 +22,7 @@ class App extends React.Component {
     let activeRoute = this.props.pageId || 'main';
 
     return (
-      <ConfigProvider insets={this.props.insets} isWebView={isWebView}>
+      <ConfigProvider isWebView={isWebView}>
         <Epic activeStory={activeRoute} tabbar={
           <Tabbar>
             <TabbarItem
@@ -42,9 +43,10 @@ class App extends React.Component {
             ><Icon24FavoriteOutline/></TabbarItem>
           </Tabbar>
         }>
-          <MainView id="main" accessToken={this.props.accessToken}/>
-          <SearchView id="search" accessToken={this.props.accessToken}/>
-          <BookmarksView id="bookmarks" accessToken={this.props.accessToken}/>
+          <MainView id="main"/>
+          <SearchView id="search"/>
+          <BookmarksView id="bookmarks"/>
+          <MovieInfoView id="movie"/>
         </Epic>
       </ConfigProvider>
     )

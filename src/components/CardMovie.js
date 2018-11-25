@@ -6,10 +6,15 @@ import './CardMovie.css'
 
 class CardMovie extends React.Component {
   render = () => (
-    <div className="card-movie" style={{backgroundImage: 'url(' + getImage(this.props.data.poster_path) + ')'}}>
+    <div className="card-movie">
       <span className="card-movie__bookmarks" onClick={this.props.isBookmarks ? this.props.onRemoveBookmarks : this.props.onAddBookmarks}>
         {this.props.isBookmarks ? <Icon24Favorite fill="#5181B8"/> : <Icon24FavoriteOutline fill="#5181B8"/>}
       </span>
+      <div
+        onClick={this.props.onClick}
+        className="card-movie__poster"
+        style={{backgroundImage: 'url(' + getImage(this.props.data.poster_path) + ')'}}
+      ></div>
     </div>
   )
 }

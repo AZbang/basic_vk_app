@@ -13,3 +13,7 @@ export function addBookmarks(movie) {
 export function removeBookmarks(movie) {
   return {type: 'REMOVE_FROM_BOOKMARKS', movie}
 }
+
+export function setMovieInfo(movie) {
+  return {type: 'SET_MOVIE_INFO', movie}
+}
